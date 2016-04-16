@@ -121,8 +121,8 @@ int my_callback(int data_type, int data_len, char *content)
     if ( e_imu == data_type && NULL != content )
     {
         imu *imu_data = (imu*)content;
-        //printf( "frame index: %d, stamp: %d\n", imu_data->frame_index, imu_data->time_stamp );
-        //printf( "imu: [%f %f %f %f %f %f %f]\n", imu_data->acc_x, imu_data->acc_y, imu_data->acc_z, imu_data->q[0], imu_data->q[1], imu_data->q[2], imu_data->q[3] );
+        printf( "frame index: %d, stamp: %d\n", imu_data->frame_index, imu_data->time_stamp );
+        printf( "imu: [%f %f %f %f %f %f %f]\n", imu_data->acc_x, imu_data->acc_y, imu_data->acc_z, imu_data->q[0], imu_data->q[1], imu_data->q[2], imu_data->q[3] );
  	
     	// publish imu data
 		geometry_msgs::TransformStamped g_imu;
@@ -141,8 +141,8 @@ int my_callback(int data_type, int data_len, char *content)
     if ( e_velocity == data_type && NULL != content )
     {
         velocity *vo = (velocity*)content;
-        //printf( "frame index: %d, stamp: %d\n", vo->frame_index, vo->time_stamp );
-        //printf( "vx:%f vy:%f vz:%f\n", 0.001f * vo->vx, 0.001f * vo->vy, 0.001f * vo->vz );
+        printf( "frame index: %d, stamp: %d\n", vo->frame_index, vo->time_stamp );
+        printf( "vx:%f vy:%f vz:%f\n", 0.001f * vo->vx, 0.001f * vo->vy, 0.001f * vo->vz );
 	
 		// publish velocity
 		geometry_msgs::Vector3Stamped g_vo;
@@ -158,13 +158,13 @@ int my_callback(int data_type, int data_len, char *content)
     if ( e_obstacle_distance == data_type && NULL != content )
     {
         obstacle_distance *oa = (obstacle_distance*)content;
-        //printf( "frame index: %d, stamp: %d\n", oa->frame_index, oa->time_stamp );
-        //printf( "obstacle distance:" );
-        //for ( int i = 0; i < CAMERA_PAIR_NUM; ++i )
-        //{
-            //printf( " %f ", 0.01f * oa->distance[i] );
-        //}
-		//printf( "\n" );
+        printf( "frame index: %d, stamp: %d\n", oa->frame_index, oa->time_stamp );
+        printf( "obstacle distance:" );
+        for ( int i = 0; i < CAMERA_PAIR_NUM; ++i )
+        {
+            printf( " %f ", 0.01f * oa->distance[i] );
+        }
+		printf( "\n" );
 
 		// publish obstacle distance
 		sensor_msgs::LaserScan g_oa;
@@ -180,11 +180,11 @@ int my_callback(int data_type, int data_len, char *content)
     if ( e_ultrasonic == data_type && NULL != content )
     {
         ultrasonic_data *ultrasonic = (ultrasonic_data*)content;
-        //printf( "frame index: %d, stamp: %d\n", ultrasonic->frame_index, ultrasonic->time_stamp );
-        //for ( int d = 0; d < CAMERA_PAIR_NUM; ++d )
-        //{
-            //printf( "ultrasonic distance: %f, reliability: %d\n", ultrasonic->ultrasonic[d] * 0.001f, (int)ultrasonic->reliability[d] );
-        //}
+        printf( "frame index: %d, stamp: %d\n", ultrasonic->frame_index, ultrasonic->time_stamp );
+        for ( int d = 0; d < CAMERA_PAIR_NUM; ++d )
+        {
+            printf( "ultrasonic distance: %f, reliability: %d\n", ultrasonic->ultrasonic[d] * 0.001f, (int)ultrasonic->reliability[d] );
+        }
 	
 		// publish ultrasonic data
 		sensor_msgs::LaserScan g_ul;
@@ -201,8 +201,8 @@ int my_callback(int data_type, int data_len, char *content)
 	
 	if(e_motion == data_type && NULL!=content){
 		motion* m=(motion*)content;
-		//printf("frame index: %d, stamp: %d\n", m->frame_index, m->time_stamp);
-		//printf("(px,py,pz)=(%.2f,%.2f,%.2f)\n", m->position_in_global_x, m->position_in_global_y, m->position_in_global_z);
+		printf("frame index: %d, stamp: %d\n", m->frame_index, m->time_stamp);
+		printf("(px,py,pz)=(%.2f,%.2f,%.2f)\n", m->position_in_global_x, m->position_in_global_y, m->position_in_global_z);
 
 		// publish position
 		geometry_msgs::Vector3Stamped g_pos;

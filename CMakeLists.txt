@@ -45,15 +45,21 @@ link_libraries(
   usb-1.0
   yaml-cpp)
 
-add_executable(guidanceNode
-  src/GuidanceNode.cpp
+add_library(dji_util
   src/DJI_utility.cpp)
+
+link_libraries(dji_util)
+
+add_executable(guidanceNode
+  src/GuidanceNode.cpp)
+
+add_executable(guidanceDemo
+  src/GuidanceDemo.cpp)
 
 add_executable(guidanceNodeTest
   src/GuidanceNodeTest.cpp)
 
 add_executable(guidanceNodeCalibration
-  src/GuidanceNodeCalibration.cpp
-  src/DJI_utility.cpp)
+  src/GuidanceNodeCalibration.cpp)
 
 #  vim: set et fenc=utf-8 ff=unix sts=0 sw=2 ts=2 :
