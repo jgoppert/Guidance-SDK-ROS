@@ -12,8 +12,7 @@
 #include <sensor_msgs/Image.h>
 #include <sensor_msgs/image_encodings.h>
 
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+#include <opencv2/opencv.hpp>
 
 #include "DJI_guidance.h"
 #include "DJI_utility.h"
