@@ -81,7 +81,7 @@ int my_callback(int data_type, int data_len, char *content)
 
 		if ( data->m_greyscale_image_left[CAMERA_ID] ){
 			memcpy(g_greyscale_image_left.data, data->m_greyscale_image_left[CAMERA_ID], IMAGE_SIZE);
-			imshow("left",  g_greyscale_image_left);
+			// imshow("left",  g_greyscale_image_left);
 			// publish left greyscale image
 			cv_bridge::CvImage left_8;
 			g_greyscale_image_left.copyTo(left_8.image);
@@ -92,7 +92,7 @@ int my_callback(int data_type, int data_len, char *content)
 		}
 		if ( data->m_greyscale_image_right[CAMERA_ID] ){
 			memcpy(g_greyscale_image_right.data, data->m_greyscale_image_right[CAMERA_ID], IMAGE_SIZE);
-			imshow("right", g_greyscale_image_right);
+			// imshow("right", g_greyscale_image_right);
 			// publish right greyscale image
 			cv_bridge::CvImage right_8;
 			g_greyscale_image_right.copyTo(right_8.image);
@@ -102,9 +102,9 @@ int my_callback(int data_type, int data_len, char *content)
 			right_image_pub.publish(right_8.toImageMsg());
 		}
 		if ( data->m_depth_image[CAMERA_ID] ){
-			memcpy(g_depth.data, data->m_depth_image[CAMERA_ID], IMAGE_SIZE * 2);
+			memcpy(g_depth.data, data->m_depth_image[CAMERA_ID], IMAGE_SIZE);
 			g_depth.convertTo(depth8, CV_8UC1);
-			imshow("depth", depth8);
+			// imshow("depth", depth8);
 			//publish depth image
 			cv_bridge::CvImage depth_16;
 			g_depth.copyTo(depth_16.image);
